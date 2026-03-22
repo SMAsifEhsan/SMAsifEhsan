@@ -164,10 +164,10 @@ footer .fnav a:hover{opacity:1}
 <div class="sp" id="scrollProgress"></div>
 <button class="bt" id="backTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
 <nav id="navbar"><div class="nav-inner">
-<div class="nav-links"><a onclick="navigate('home')">Home</a><a onclick="navigate('about')">About</a><a onclick="navigate('education')">Education</a><a onclick="navigate('research')">Research</a><a onclick="navigate('publications')">Publications</a><a onclick="navigate('grants')">Grants</a><a onclick="navigate('teaching')">Teaching</a><a onclick="navigate('service')">Service</a><a onclick="navigate('contact')">Contact</a></div>
+<div class="nav-links"><a onclick="navigate('home')">Home</a><a onclick="navigate('about')">About</a><a onclick="navigate('education')">Education</a><a onclick="navigate('research')">Research</a><a onclick="navigate('publications')">Publications</a><a onclick="navigate('grants')">Grants &amp; Awards</a><a onclick="navigate('teaching')">Teaching</a><a onclick="navigate('service')">Service</a><a onclick="navigate('contact')">Contact</a></div>
 <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
 </div></nav>
-<div class="mobile-menu" id="mobileMenu"><a onclick="navigate('home')">Home</a><a onclick="navigate('about')">About</a><a onclick="navigate('education')">Education</a><a onclick="navigate('research')">Research</a><a onclick="navigate('publications')">Publications</a><a onclick="navigate('grants')">Grants</a><a onclick="navigate('teaching')">Teaching</a><a onclick="navigate('service')">Service</a><a onclick="navigate('contact')">Contact</a></div>
+<div class="mobile-menu" id="mobileMenu"><a onclick="navigate('home')">Home</a><a onclick="navigate('about')">About</a><a onclick="navigate('education')">Education</a><a onclick="navigate('research')">Research</a><a onclick="navigate('publications')">Publications</a><a onclick="navigate('grants')">Grants &amp; Awards</a><a onclick="navigate('teaching')">Teaching</a><a onclick="navigate('service')">Service</a><a onclick="navigate('contact')">Contact</a></div>
 <!-- HOME -->
 <div class="page active" id="page-home"><div class="hero-section"><div class="hero-inner">
 <div class="hero-text">
@@ -280,8 +280,10 @@ footer .fnav a:hover{opacity:1}
 </div></div>
 <!-- GRANTS -->
 <div class="page" id="page-grants"><div class="page-content">
-<div class="bc"><a onclick="navigate('home')">Home</a> <span>›</span> Grants</div>
-<div class="page-header"><div class="page-label">Grants &amp; Projects</div><h1 class="page-title">Funded Research</h1><p class="page-subtitle">Projects funded by IDRC, IUCN, UNDP, UNICEF, Commonwealth Secretariat, Concern Worldwide, and NSU.</p></div>
+<div class="bc"><a onclick="navigate('home')">Home</a> <span>›</span> Grants &amp; Awards</div>
+<div class="page-header"><div class="page-label">Grants &amp; Awards</div><h1 class="page-title">Funded Research &amp; Awards</h1><p class="page-subtitle">Research projects, consultancies, and academic honors.</p></div>
+<div class="tabs" id="gatabs"><button class="active" data-ga="ga-grants">Funded Projects</button><button data-ga="ga-awards">Awards &amp; Honors</button></div>
+<div class="tp active" id="ga-grants">
 <div class="gs"><div><div class="n">11</div><div class="l">Projects</div></div><div><div class="n">8</div><div class="l">Funding Bodies</div></div><div><div class="n">CAD 1.5M</div><div class="l">Largest Grant</div></div></div>
 <div class="gl">
 <div class="gc"><div class="ga">1.</div><div><h3>Spatial Surge Forecasting Using AI and Community Knowledge</h3><div class="gf">CLARE (FCDO, UK &amp; IDRC, Canada) · Jul 2023 – ongoing</div><div class="gr">Co-Investigator · DALA Expert</div></div><div class="ga" style="text-align:right">CAD 1.5M</div></div>
@@ -295,6 +297,18 @@ footer .fnav a:hover{opacity:1}
 <div class="gc"><div class="ga">9.</div><div><h3>Barriers of Accessing Social Protection for the Poor</h3><div class="gf">UNDP, Bangladesh · Dec 2018–Mar 2019</div><div class="gr">Co-Investigator</div></div></div>
 <div class="gc"><div class="ga">10.</div><div><h3>Global Trade Turmoil: Implications for LDCs &amp; Small States</h3><div class="gf">Commonwealth Secretariat · Oct 2018–Jan 2019</div><div class="gr">Short-term Consultant</div></div></div>
 <div class="gc"><div class="ga">11.</div><div><h3>Solar Energy Access in Rural Off-Grid Areas of Bangladesh</h3><div class="gf">CTRG, NSU · May 2018–Apr 2019</div><div class="gr">Principal Investigator</div></div></div>
+</div>
+</div>
+<div class="tp" id="ga-awards">
+<div class="gl">
+<div class="gc"><div class="ga">2015</div><div><h3>Economics Teaching Workshop Travel Grant</h3><div class="gf">Department of Economics, Virginia Tech</div></div></div>
+<div class="gc"><div class="ga">2013–14</div><div><h3>Doctoral Research Assistantship</h3><div class="gf">Department of Economics, Virginia Tech</div></div></div>
+<div class="gc"><div class="ga">2011–16</div><div><h3>Graduate Teaching Assistantship (Full Tuition Waiver + Stipend)</h3><div class="gf">Department of Economics, Virginia Tech, USA</div></div></div>
+<div class="gc"><div class="ga">2009–10</div><div><h3>Graduate Scholarship (Full Tuition Waiver + Stipend)</h3><div class="gf">University of Dhaka, Bangladesh</div></div></div>
+<div class="gc"><div class="ga">2005–09</div><div><h3>Undergraduate Scholarship (Full Tuition Waiver + Stipend)</h3><div class="gf">Supported by the Rajshahi Board, University of Dhaka, Bangladesh</div></div></div>
+<div class="gc"><div class="ga">2004</div><div><h3>Rajshahi Board Scholarship (HSC)</h3><div class="gf">17th position in the Merit List of HSC Examination, Bangladesh</div></div></div>
+<div class="gc"><div class="ga">2002</div><div><h3>Rajshahi Board Scholarship (SSC)</h3><div class="gf">4th position in the Merit List of SSC Examination, Bangladesh</div></div></div>
+</div>
 </div>
 </div></div>
 <!-- TEACHING -->
@@ -401,7 +415,7 @@ footer .fnav a:hover{opacity:1}
 <footer>
 <div class="fn">Dr. Syed Mortuza Asif Ehsan</div>
 <p>Associate Professor &amp; Chairperson · Department of Economics · North South University</p>
-<div class="fnav"><a onclick="navigate('home')">Home</a><a onclick="navigate('about')">About</a><a onclick="navigate('education')">Education</a><a onclick="navigate('research')">Research</a><a onclick="navigate('publications')">Publications</a><a onclick="navigate('grants')">Grants</a><a onclick="navigate('teaching')">Teaching</a><a onclick="navigate('service')">Service</a><a onclick="navigate('contact')">Contact</a></div>
+<div class="fnav"><a onclick="navigate('home')">Home</a><a onclick="navigate('about')">About</a><a onclick="navigate('education')">Education</a><a onclick="navigate('research')">Research</a><a onclick="navigate('publications')">Publications</a><a onclick="navigate('grants')">Grants &amp; Awards</a><a onclick="navigate('teaching')">Teaching</a><a onclick="navigate('service')">Service</a><a onclick="navigate('contact')">Contact</a></div>
 <p style="margin-top:1rem;opacity:.5">&copy; 2026</p>
 </footer>
 <script>
@@ -463,6 +477,13 @@ for(var i=0;i<stb.length;i++){stb[i].addEventListener('click',function(){
   var panels=document.querySelectorAll('#page-service .tp');
   for(var j=0;j<panels.length;j++)panels[j].classList.remove('active');
   this.classList.add('active');document.getElementById(this.dataset.s).classList.add('active');
+});}
+var gab=document.querySelectorAll('#gatabs button');
+for(var i=0;i<gab.length;i++){gab[i].addEventListener('click',function(){
+  for(var j=0;j<gab.length;j++)gab[j].classList.remove('active');
+  var panels=document.querySelectorAll('#page-grants .tp');
+  for(var j=0;j<panels.length;j++)panels[j].classList.remove('active');
+  this.classList.add('active');document.getElementById(this.dataset.ga).classList.add('active');
 });}
 var eu='syed.ehsan';var ed='northsouth.edu';var em=eu+String.fromCharCode(64)+ed;
 var e1=document.getElementById('email1');if(e1){e1.href='mai'+'lto:'+em;e1.textContent=em;}
