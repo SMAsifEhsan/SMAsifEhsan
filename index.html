@@ -56,7 +56,7 @@ nav.scrolled{box-shadow:0 1px 12px rgba(0,0,0,.08)}
 .stat-item .stat-label{font-size:.78rem;color:var(--muted);margin-top:.1rem}
 @keyframes fadeUp{from{opacity:0;transform:translateY(25px)}to{opacity:1;transform:none}}
 .about-grid{display:grid;grid-template-columns:1fr 360px;gap:3rem}
-.about-text{font-size:.95rem;color:var(--muted);line-height:1.85}
+.about-text{font-size:.95rem;color:var(--muted);line-height:1.85;text-align:justify}
 .about-text p{margin-bottom:1.3rem}
 .about-text strong{color:var(--ink)}
 .about-text em{color:var(--accent);font-style:italic}
@@ -198,7 +198,7 @@ footer .fnav a:hover{opacity:1}
 <div class="info-row"><span class="label">University</span><span class="value">North South University</span></div>
 <div class="info-row"><span class="label">Office</span><span class="value">NAC 801</span></div>
 <div class="info-row"><span class="label">Phone</span><span class="value">+8802 55668200 Ext. 1800</span></div>
-<div class="info-row"><span class="label">Email</span><span class="value"><a href="mailto:syed.ehsan@northsouth.edu">syed.ehsan@northsouth.edu</a></span></div>
+<div class="info-row"><span class="label">Email</span><span class="value"><a id="email1" href="#">loading...</a></span></div>
 </div>
 <div class="info-card"><h4>Professional Memberships</h4>
 <div class="info-row"><span class="label">Active</span><span class="value"><a href="https://www.econometricsociety.org/membership/directory/view/Syed-Mortuza-Asif-Ehsan-9UJVSG" target="_blank">Econometric Society</a></span></div>
@@ -209,15 +209,7 @@ footer .fnav a:hover{opacity:1}
 <div class="info-row"><span class="label">Life</span><span class="value">DU Econ Alumni Assoc.</span></div>
 <div class="info-row"><span class="label">Life</span><span class="value">Cadet College Club Ltd.</span></div>
 </div>
-<div class="info-card"><h4>Awards &amp; Honors</h4>
-<div class="info-row"><span class="label">2015</span><span class="value">Teaching Workshop Travel Grant, VT</span></div>
-<div class="info-row"><span class="label">2013–14</span><span class="value">Doctoral Research Assistantship</span></div>
-<div class="info-row"><span class="label">2011–16</span><span class="value">Grad TA (Full Tuition + Stipend)</span></div>
-<div class="info-row"><span class="label">2009–10</span><span class="value">Graduate Scholarship, U. Dhaka</span></div>
-<div class="info-row"><span class="label">2005–09</span><span class="value">Undergrad Scholarship, U. Dhaka</span></div>
-<div class="info-row"><span class="label">2004</span><span class="value">Rajshahi Board Scholarship (HSC)</span></div>
-<div class="info-row"><span class="label">2002</span><span class="value">Rajshahi Board Scholarship (SSC)</span></div>
-</div>
+
 </div>
 </div>
 </div></div>
@@ -392,7 +384,7 @@ footer .fnav a:hover{opacity:1}
 <div class="page-header"><div class="page-label">Contact</div><h1 class="page-title">Get in Touch</h1><p class="page-subtitle">For research collaborations, academic inquiries, or speaking invitations.</p></div>
 <div class="contact-grid">
 <div>
-<div class="cti"><div class="cti-icon">📧</div><div><div class="cti-l">Email</div><div class="cti-v"><a href="mailto:syed.ehsan@northsouth.edu">syed.ehsan@northsouth.edu</a></div></div></div>
+<div class="cti"><div class="cti-icon">📧</div><div><div class="cti-l">Email</div><div class="cti-v"><a id="email2" href="#">loading...</a></div></div></div>
 <div class="cti"><div class="cti-icon">📞</div><div><div class="cti-l">Phone</div><div class="cti-v">+8802 55668200 Ext. 1800</div></div></div>
 <div class="cti"><div class="cti-icon">🏢</div><div><div class="cti-l">Office</div><div class="cti-v">NAC 801, 8th Floor (East)<br>North Academic Building<br>North South University</div></div></div>
 <div class="cti"><div class="cti-icon">📍</div><div><div class="cti-l">Address</div><div class="cti-v">North South University<br>Bashundhara, Dhaka-1229<br>Bangladesh</div></div></div>
@@ -472,6 +464,9 @@ for(var i=0;i<stb.length;i++){stb[i].addEventListener('click',function(){
   for(var j=0;j<panels.length;j++)panels[j].classList.remove('active');
   this.classList.add('active');document.getElementById(this.dataset.s).classList.add('active');
 });}
+var eu='syed.ehsan';var ed='northsouth.edu';var em=eu+String.fromCharCode(64)+ed;
+var e1=document.getElementById('email1');if(e1){e1.href='mai'+'lto:'+em;e1.textContent=em;}
+var e2=document.getElementById('email2');if(e2){e2.href='mai'+'lto:'+em;e2.textContent=em;}
 </script>
 </body>
 </html>
