@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dr. S. M. Asif Ehsan — Economist</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Source+Sans+3:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--ink:#1a1a1a;--paper:#faf8f5;--accent:#8b2500;--accent-light:#c4513a;--muted:#6b6560;--border:#e0dbd5;--card:#fff;--tag-bg:#f0ebe5;--shadow:0 2px 20px rgba(0,0,0,.06);--serif:'Cormorant Garamond',Georgia,serif;--sans:'Source Sans 3','Segoe UI',sans-serif;--mono:'JetBrains Mono',monospace;--max-w:1100px;--nav-h:64px}
+html{scroll-behavior:smooth;font-size:16px}
+body{font-family:var(--sans);color:var(--ink);background:var(--paper);line-height:1.7;overflow-x:hidden}
+nav{position:fixed;top:0;left:0;width:100%;height:var(--nav-h);background:rgba(250,248,245,.95);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);z-index:1000;transition:box-shadow .3s}
+nav.scrolled{box-shadow:0 1px 12px rgba(0,0,0,.08)}
+.nav-inner{max-width:var(--max-w);margin:0 auto;height:100%;display:flex;align-items:center;justify-content:center;padding:0 2rem}
+.nav-links{display:flex;gap:.1rem;align-items:center}
+.nav-links a{font-size:.78rem;font-weight:500;color:var(--muted);text-decoration:none;padding:.42rem .72rem;border-radius:6px;transition:all .2s;letter-spacing:.03em;text-transform:uppercase;cursor:pointer;white-space:nowrap}
+.nav-links a:hover,.nav-links a.active{color:var(--accent);background:var(--tag-bg)}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:8px;background:none;border:none;position:absolute;right:2rem}
+.hamburger span{width:22px;height:2px;background:var(--ink);transition:all .3s;border-radius:2px}
+.mobile-menu{display:none;position:fixed;top:var(--nav-h);left:0;width:100%;background:var(--paper);border-bottom:1px solid var(--border);padding:1rem 2rem;z-index:999;box-shadow:0 8px 24px rgba(0,0,0,.08)}
+.mobile-menu.open{display:block}
+.mobile-menu a{display:block;padding:.75rem 0;font-size:.92rem;color:var(--muted);text-decoration:none;font-weight:500;border-bottom:1px solid var(--border);cursor:pointer}
+.mobile-menu a:last-child{border:none}
+.mobile-menu a:hover,.mobile-menu a.active{color:var(--accent)}
+.page{display:none;min-height:calc(100vh - var(--nav-h));padding-top:var(--nav-h)}
+.page.active{display:block;animation:pageIn .45s ease}
+@keyframes pageIn{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+.page-content{max-width:var(--max-w);margin:0 auto;padding:3rem 2rem 5rem}
+.page-header{margin-bottom:3rem;padding-bottom:2rem;border-bottom:1px solid var(--border)}
+.page-label{font-family:var(--mono);font-size:.72rem;text-transform:uppercase;letter-spacing:.15em;color:var(--accent);margin-bottom:.5rem;font-weight:500}
+.page-title{font-family:var(--serif);font-size:2.6rem;font-weight:700;line-height:1.15;margin-bottom:.5rem}
+.page-subtitle{color:var(--muted);font-size:1.05rem;max-width:700px;line-height:1.7}
+.hero-section{min-height:100vh;display:flex;align-items:center;padding:0 2rem;position:relative;overflow:hidden}
+.hero-section::before{content:'';position:absolute;top:0;right:-10%;width:55%;height:100%;background:radial-gradient(ellipse at 70% 30%,rgba(139,37,0,.04) 0%,transparent 70%);pointer-events:none}
+.hero-inner{max-width:var(--max-w);margin:0 auto;display:grid;grid-template-columns:1fr 320px;gap:4rem;align-items:center;width:100%}
+.hero-text h1{font-family:var(--serif);font-size:3.2rem;font-weight:700;line-height:1.12;margin-bottom:.6rem;opacity:0;animation:fadeUp .8s .2s forwards}
+.hero-text h1 .accent{color:var(--accent)}
+.hero-text .subtitle{font-size:1.15rem;color:var(--muted);font-weight:400;margin-bottom:.35rem;opacity:0;animation:fadeUp .8s .35s forwards}
+.hero-text .affiliation{font-size:.95rem;color:var(--muted);margin-bottom:1.8rem;opacity:0;animation:fadeUp .8s .45s forwards}
+.hero-text .affiliation strong{color:var(--ink);font-weight:600}
+.hero-tags{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:2rem;opacity:0;animation:fadeUp .8s .55s forwards}
+.hero-tags span{background:var(--tag-bg);color:var(--muted);font-size:.78rem;padding:.35rem .8rem;border-radius:20px;font-weight:500}
+.hero-links{display:flex;gap:.7rem;flex-wrap:wrap;opacity:0;animation:fadeUp .8s .65s forwards}
+.hero-links a{font-size:.82rem;font-weight:600;text-decoration:none;padding:.55rem 1.2rem;border-radius:6px;transition:all .25s;letter-spacing:.02em;cursor:pointer}
+.hero-links .primary{background:var(--accent);color:#fff}
+.hero-links .primary:hover{background:var(--accent-light);transform:translateY(-1px)}
+.hero-links .secondary{border:1.5px solid var(--border);color:var(--ink)}
+.hero-links .secondary:hover{border-color:var(--accent);color:var(--accent)}
+.hero-photo{position:relative;opacity:0;animation:fadeUp .8s .4s forwards}
+.photo-frame{width:290px;height:360px;border-radius:16px;overflow:hidden;background:var(--border);box-shadow:var(--shadow)}
+.photo-frame img{width:100%;height:100%;object-fit:cover}
+.photo-accent{position:absolute;bottom:-10px;right:-10px;width:290px;height:360px;border:2px solid var(--accent);border-radius:16px;opacity:.15;z-index:-1}
+.hero-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:2.5rem;padding-top:2rem;border-top:1px solid var(--border);opacity:0;animation:fadeUp .8s .75s forwards}
+.stat-item .stat-num{font-family:var(--serif);font-size:2rem;font-weight:700;color:var(--accent)}
+.stat-item .stat-label{font-size:.78rem;color:var(--muted);margin-top:.1rem}
+@keyframes fadeUp{from{opacity:0;transform:translateY(25px)}to{opacity:1;transform:none}}
+.about-grid{display:grid;grid-template-columns:1fr 360px;gap:3rem}
+.about-text{font-size:.95rem;color:var(--muted);line-height:1.85}
+.about-text p{margin-bottom:1.3rem}
+.about-text strong{color:var(--ink)}
+.about-text em{color:var(--accent);font-style:italic}
+.info-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:1.5rem;margin-bottom:1.2rem}
+.info-card h4{font-family:var(--serif);font-size:1.15rem;font-weight:600;margin-bottom:1rem}
+.info-row{display:flex;justify-content:space-between;padding:.45rem 0;border-bottom:1px solid var(--border);font-size:.88rem;gap:.5rem}
+.info-row:last-child{border:none}
+.info-row .label{color:var(--muted)}
+.info-row .value{color:var(--ink);font-weight:600;text-align:right}
+.info-row .value a{color:var(--accent);text-decoration:none}
+.info-row .value a:hover{text-decoration:underline}
+.timeline{position:relative;padding-left:2.5rem;max-width:720px}
+.timeline::before{content:'';position:absolute;left:8px;top:8px;bottom:8px;width:2px;background:var(--border)}
+.timeline-item{position:relative;margin-bottom:2.2rem;animation:fadeUp .5s both}
+.timeline-item:nth-child(1){animation-delay:.1s}.timeline-item:nth-child(2){animation-delay:.2s}.timeline-item:nth-child(3){animation-delay:.3s}.timeline-item:nth-child(4){animation-delay:.4s}.timeline-item:nth-child(5){animation-delay:.5s}
+.timeline-item::before{content:'';position:absolute;left:-2.5rem;top:8px;width:18px;height:18px;border-radius:50%;border:3px solid var(--accent);background:var(--paper);z-index:1}
+.timeline-item.major::before{background:var(--accent)}
+.timeline-item h3{font-family:var(--serif);font-size:1.25rem;font-weight:600;margin-bottom:.15rem}
+.timeline-item .institution{color:var(--accent);font-weight:500;font-size:.92rem}
+.timeline-item .year{font-family:var(--mono);font-size:.78rem;color:var(--muted);margin-top:.2rem}
+.timeline-item .detail{color:var(--muted);font-size:.88rem;margin-top:.3rem;line-height:1.6}
+.career-section{margin-top:3.5rem}
+.career-section h3{font-family:var(--serif);font-size:1.4rem;font-weight:600;margin-bottom:1.5rem}
+.career-item{display:grid;grid-template-columns:140px 1fr;gap:1rem;padding:1rem 0;border-bottom:1px solid var(--border)}
+.career-item:last-child{border:none}
+.career-item .period{font-family:var(--mono);font-size:.78rem;color:var(--accent);padding-top:.15rem}
+.career-item .role{font-weight:600;font-size:.95rem}
+.career-item .org{font-size:.88rem;color:var(--muted)}
+.research-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem;margin-bottom:3rem}
+.research-card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:2rem;transition:all .3s;position:relative;overflow:hidden}
+.research-card::before{content:'';position:absolute;top:0;left:0;width:100%;height:4px;background:var(--accent);opacity:0;transition:opacity .3s}
+.research-card:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
+.research-card:hover::before{opacity:1}
+.research-card .icon{font-size:2rem;margin-bottom:1rem}
+.research-card h3{font-family:var(--serif);font-size:1.2rem;font-weight:600;margin-bottom:.6rem}
+.research-card p{color:var(--muted);font-size:.88rem;line-height:1.7}
+.topic-tags{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:1.2rem}
+.topic-tag{background:var(--tag-bg);color:var(--muted);font-size:.82rem;padding:.45rem 1rem;border-radius:8px;font-weight:500;transition:all .2s;cursor:default}
+.topic-tag:hover{background:var(--accent);color:#fff}
+.pub-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-bottom:2.5rem}
+.pub-stat{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:1.2rem;text-align:center}
+.pub-stat .num{font-family:var(--serif);font-size:1.8rem;font-weight:700;color:var(--accent)}
+.pub-stat .lbl{font-size:.75rem;color:var(--muted);margin-top:.1rem;text-transform:uppercase;letter-spacing:.05em}
+.pub-filter{display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:2rem;position:sticky;top:var(--nav-h);background:var(--paper);padding:1rem 0;z-index:10}
+.pub-filter button{background:var(--tag-bg);border:none;padding:.48rem 1rem;border-radius:20px;font-size:.8rem;font-weight:500;color:var(--muted);cursor:pointer;transition:all .2s;font-family:var(--sans)}
+.pub-filter button.active,.pub-filter button:hover{background:var(--accent);color:#fff}
+.pub-list{display:flex;flex-direction:column;gap:.8rem}
+.pub-item{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:1.3rem 1.5rem;transition:all .3s;display:none}
+.pub-item.show{display:block}
+.pub-item:hover{border-color:var(--accent);box-shadow:0 2px 12px rgba(139,37,0,.06)}
+.pub-year-tag{font-family:var(--mono);font-size:.72rem;color:var(--accent);font-weight:500;letter-spacing:.05em;margin-bottom:.3rem}
+.pub-title{font-family:var(--serif);font-size:1.05rem;font-weight:600;line-height:1.4;margin-bottom:.3rem}
+.pub-authors{font-size:.82rem;color:var(--muted);margin-bottom:.25rem}
+.pub-journal{font-size:.82rem;color:var(--ink);font-style:italic}
+.pub-meta{display:flex;gap:.5rem;margin-top:.5rem;flex-wrap:wrap;align-items:center}
+.pub-badge{font-size:.66rem;padding:.18rem .48rem;border-radius:4px;font-weight:600;font-family:var(--mono)}
+.pub-badge.q1{background:#e8f5e9;color:#2e7d32}.pub-badge.q2{background:#e3f2fd;color:#1565c0}.pub-badge.q3{background:#fff3e0;color:#e65100}.pub-badge.scopus{background:#f3e5f5;color:#7b1fa2}.pub-badge.abdc{background:#fce4ec;color:#c62828}
+.pub-link{font-size:.78rem;color:var(--accent);text-decoration:none;font-weight:600}
+.pub-link:hover{text-decoration:underline}
+.grant-summary{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-bottom:2.5rem}
+.grant-stat{text-align:center;padding:1.2rem;background:var(--card);border:1px solid var(--border);border-radius:10px}
+.grant-stat .num{font-family:var(--serif);font-size:1.6rem;font-weight:700;color:var(--accent)}
+.grant-stat .lbl{font-size:.75rem;color:var(--muted);margin-top:.1rem}
+.grants-list{display:grid;gap:1rem}
+.grant-card{display:grid;grid-template-columns:40px 1fr auto;gap:1rem;padding:1.5rem;background:var(--card);border:1px solid var(--border);border-radius:12px;transition:all .3s}
+.grant-card:hover{border-color:var(--accent);box-shadow:0 2px 12px rgba(139,37,0,.06)}
+.grant-amount{font-family:var(--mono);font-size:.82rem;color:var(--accent);font-weight:600;padding-top:.15rem;line-height:1.4}
+.grant-card h3{font-family:var(--serif);font-size:1rem;font-weight:600;line-height:1.4;margin-bottom:.3rem}
+.grant-funder{font-size:.84rem;color:var(--muted)}
+.grant-role{display:inline-block;font-size:.72rem;padding:.2rem .55rem;border-radius:4px;background:var(--tag-bg);color:var(--muted);font-weight:600;margin-top:.4rem}
+.teaching-tabs,.service-tabs{display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:2rem}
+.teaching-tabs button,.service-tabs button{background:var(--tag-bg);border:none;padding:.5rem 1.1rem;border-radius:8px;font-size:.84rem;font-weight:500;cursor:pointer;transition:all .2s;font-family:var(--sans);color:var(--muted)}
+.teaching-tabs button.active,.service-tabs button.active{background:var(--accent);color:#fff}
+.teaching-panel,.service-panel{display:none}
+.teaching-panel.active,.service-panel.active{display:block;animation:pageIn .3s ease}
+.course-grid{display:grid;grid-template-columns:1fr 1fr;gap:.8rem}
+.course-card{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:1.1rem 1.3rem;display:flex;justify-content:space-between;align-items:center;transition:all .2s}
+.course-card:hover{border-color:var(--accent)}
+.course-name{font-weight:500;font-size:.92rem}
+.course-code{font-family:var(--mono);font-size:.72rem;color:var(--accent);background:var(--tag-bg);padding:.2rem .5rem;border-radius:4px}
+.service-list{list-style:none}
+.service-list li{padding:.65rem 0;border-bottom:1px solid var(--border);font-size:.9rem;display:flex;gap:1rem;align-items:baseline;line-height:1.6}
+.service-list li:last-child{border:none}
+.year-label{font-family:var(--mono);font-size:.72rem;color:var(--accent);min-width:85px;font-weight:500;flex-shrink:0}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem}
+.contact-item{display:flex;gap:1rem;align-items:flex-start;margin-bottom:1.8rem}
+.contact-icon{width:44px;height:44px;background:var(--tag-bg);border-radius:12px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:1.15rem}
+.contact-label{font-size:.75rem;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;font-weight:500}
+.contact-value{font-size:.95rem;font-weight:500;margin-top:.15rem}
+.contact-value a{color:var(--accent);text-decoration:none}
+.contact-value a:hover{text-decoration:underline}
+.profile-link{display:flex;align-items:center;gap:1rem;padding:1.1rem 1.3rem;background:var(--card);border:1px solid var(--border);border-radius:12px;text-decoration:none;color:var(--ink);transition:all .3s;margin-bottom:.8rem}
+.profile-link:hover{border-color:var(--accent);transform:translateX(4px);box-shadow:0 2px 12px rgba(139,37,0,.06)}
+.pf-icon{width:40px;height:40px;border-radius:10px;background:var(--tag-bg);display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0}
+.pf-name{font-weight:600;font-size:.9rem}
+.pf-desc{font-size:.78rem;color:var(--muted)}
+.pf-arrow{margin-left:auto;color:var(--accent);font-size:1.2rem;transition:transform .2s}
+.profile-link:hover .pf-arrow{transform:translateX(4px)}
+footer{background:var(--ink);color:rgba(255,255,255,.55);padding:3rem 2rem;text-align:center;font-size:.82rem}
+footer a{color:rgba(255,255,255,.75);text-decoration:none}
+footer .footer-name{font-family:var(--serif);font-size:1.1rem;color:#fff;margin-bottom:.3rem}
+footer .footer-nav{display:flex;justify-content:center;gap:1rem;flex-wrap:wrap;margin-top:1rem}
+footer .footer-nav a{font-size:.78rem;opacity:.7;transition:opacity .2s;cursor:pointer}
+footer .footer-nav a:hover{opacity:1}
+.breadcrumb{font-size:.78rem;color:var(--muted);margin-bottom:1.5rem;display:flex;align-items:center;gap:.4rem}
+.breadcrumb a{color:var(--accent);text-decoration:none;cursor:pointer}
+.breadcrumb a:hover{text-decoration:underline}
+.scroll-progress{position:fixed;top:var(--nav-h);left:0;height:2px;background:var(--accent);z-index:1001;width:0%;transition:width .15s}
+.back-top{position:fixed;bottom:2rem;right:2rem;width:42px;height:42px;background:var(--accent);color:#fff;border:none;border-radius:50%;font-size:1.1rem;cursor:pointer;opacity:0;transform:translateY(10px);transition:all .3s;z-index:100;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 12px rgba(139,37,0,.3)}
+.back-top.visible{opacity:1;transform:none}
+.back-top:hover{background:var(--accent-light);transform:translateY(-2px)}
+.research-topics h3{font-family:var(--serif);font-size:1.4rem;font-weight:600;margin-bottom:1.2rem;margin-top:3rem}
+@media(max-width:900px){
+.hero-inner{grid-template-columns:1fr;text-align:center}.hero-photo{order:-1;justify-self:center}.photo-frame{width:200px;height:250px}.photo-accent{width:200px;height:250px}.hero-text h1{font-size:2.3rem}.hero-tags{justify-content:center}.hero-links{justify-content:center}.hero-stats{grid-template-columns:repeat(3,1fr);gap:1rem}.about-grid{grid-template-columns:1fr}.contact-grid{grid-template-columns:1fr}.research-grid{grid-template-columns:1fr}.course-grid{grid-template-columns:1fr}.grant-card{grid-template-columns:30px 1fr auto}.nav-links{display:none}.hamburger{display:flex}.page-title{font-size:2rem}
+}
+@media(max-width:600px){.hero-text h1{font-size:1.8rem}.page-content{padding:2rem 1.2rem 4rem}.pub-stats{grid-template-columns:1fr 1fr}.grant-summary{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="scroll-progress" id="scrollProgress"></div>
+<button class="back-top" id="backTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+<nav id="navbar"><div class="nav-inner">
+<div class="nav-links"><a onclick="navigate('home')">Home</a><a onclick="navigate('about')">About</a><a onclick="navigate('education')">Education</a><a onclick="navigate('research')">Research</a><a onclick="navigate('publications')">Publications</a><a onclick="navigate('grants')">Grants</a><a onclick="navigate('teaching')">Teaching</a><a onclick="navigate('service')">Service</a><a onclick="navigate('contact')">Contact</a></div>
+<button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+</div></nav>
+<div class="mobile-menu" id="mobileMenu"><a onclick="navigate('home')">Home</a><a onclick="navigate('about')">About</a><a onclick="navigate('education')">Education</a><a onclick="navigate('research')">Research</a><a onclick="navigate('publications')">Publications</a><a onclick="navigate('grants')">Grants</a><a onclick="navigate('teaching')">Teaching</a><a onclick="navigate('service')">Service</a><a onclick="navigate('contact')">Contact</a></div>
+<!-- HOME -->
+<div class="page active" id="page-home"><div class="hero-section"><div class="hero-inner">
+<div class="hero-text">
+<h1>Syed Mortuza<br><span class="accent">Asif Ehsan</span></h1>
+<p class="subtitle">Associate Professor &amp; Chairperson, Department of Economics</p>
+<p class="affiliation"><strong>North South University</strong> · Dhaka, Bangladesh</p>
+<div class="hero-tags"><span>Development Economics</span><span>Applied Econometrics</span><span>Environmental Economics</span><span>Labor Economics</span></div>
+<div class="hero-links"><a class="primary" onclick="navigate('publications')">Publications</a><a class="secondary" onclick="navigate('research')">Research</a><a class="secondary" href="CV_Academic.pdf" target="_blank">CV ↗</a><a class="secondary" onclick="navigate('contact')">Contact</a></div>
+<div class="hero-stats"><div class="stat-item"><div class="stat-num">11</div><div class="stat-label">Journal Articles</div></div><div class="stat-item"><div class="stat-num">11</div><div class="stat-label">Funded Projects</div></div><div class="stat-item"><div class="stat-num">15+</div><div class="stat-label">Courses Taught</div></div></div>
+</div>
+<div class="hero-photo"><div class="photo-frame"><img src="Photo.png" alt="Dr. S. M. Asif Ehsan"></div><div class="photo-accent"></div></div>
+</div></div></div>
+
+<!-- ABOUT -->
+<div class="page" id="page-about"><div class="page-content">
+<div class="breadcrumb"><a onclick="navigate('home')">Home</a> <span>›</span> About</div>
+<div class="page-header"><div class="page-label">About</div><h1 class="page-title">Biography</h1><p class="page-subtitle">Development economist with expertise in applied econometrics, environmental policy, and labor economics.</p></div>
+<div class="about-grid"><div class="about-text">
+<p>Dr. S. M. Asif Ehsan is an <strong>Associate Professor</strong> and the <strong>Chairperson</strong> of the Department of Economics at <strong>North South University</strong>, Bangladesh. He earned his Ph.D. in Economics from <strong>Virginia Tech, USA</strong>, where his dissertation explored the impacts of contract duration on environmental outcomes in the hydraulic fracturing industry, under the supervision of Dr. Nicolaus Tideman.</p>
+<p>As an empirical researcher, Dr. Ehsan engages in core economic studies and has contributed to several <strong>interdisciplinary research projects</strong> supported by organizations such as the International Development Research Centre (IDRC, Canada), the International Union for Conservation of Nature (IUCN), UNDP, Commonwealth Secretariat, Concern Worldwide, and the Bangladesh Planning Commission.</p>
+<p>His research addresses a wide range of <strong>socio-economic and environmental issues</strong>, and he has published in prominent journals including <em>World Development Perspectives</em>, <em>Energy Research &amp; Social Science</em>, <em>Economic Papers</em>, and <em>Sustainable Development</em>. He also serves as <strong>Co-Editor</strong> of the journal <em>Development Letters</em> and as a <strong>Reviewer</strong> for journals including <em>Economic Papers</em> and <em>Poverty &amp; Public Policy</em>.</p>
+<p>At North South University, Dr. Ehsan teaches graduate courses, covering topics such as panel data analysis, time series forecasting, and game theory. Prior to his Ph.D., he completed his bachelor's and master's degrees in Economics from the <strong>University of Dhaka</strong>, graduating with first-class honors in both.</p>
+</div><div>
+<div class="info-card"><h4>Contact &amp; Office</h4>
+<div class="info-row"><span class="label">Position</span><span class="value">Assoc. Professor &amp; Chair</span></div>
+<div class="info-row"><span class="label">Department</span><span class="value">Economics, SBE</span></div>
+<div class="info-row"><span class="label">University</span><span class="value">North South University</span></div>
+<div class="info-row"><span class="label">Office</span><span class="value">NAC 801</span></div>
+<div class="info-row"><span class="label">Phone</span><span class="value">+8802 55668200 Ext. 1800</span></div>
+<div class="info-row"><span class="label">Email</span><span class="value"><a href="mailto:syed.ehsan@northsouth.edu">syed.ehsan@northsouth.edu</a></span></div></div>
+<div class="info-card"><h4>Professional Memberships</h4>
+<div class="info-row"><span class="label">Active</span><span class="value"><a href="https://www.econometricsociety.org/membership/directory/view/Syed-Mortuza-Asif-Ehsan-9UJVSG" target="_blank">Econometric Society</a></span></div>
+<div class="info-row"><span class="label">Regular</span><span class="value">American Economic Assoc.</span></div>
+<div class="info-row"><span class="label">Member</span><span class="value">East Asian Economic Assoc.</span></div>
+<div class="info-row"><span class="label">Life</span><span class="value">Bangladesh Economic Assoc.</span></div>
+<div class="info-row"><span class="label">Life</span><span class="value">American Alumni Assoc.</span></div>
+<div class="info-row"><span class="label">Life</span><span class="value">DU Econ Alumni Assoc.</span></div>
+<div class="info-row"><span class="label">Life</span><span class="value">Cadet College Club Ltd.</span></div></div>
+<div class="info-card"><h4>Awards &amp; Honors</h4>
+<div class="info-row"><span class="label">2015</span><span class="value">Teaching Workshop Travel Grant, VT</span></div>
+<div class="info-row"><span class="label">2013–14</span><span class="value">Doctoral Research Assistantship</span></div>
+<div class="info-row"><span class="label">2011–16</span><span class="value">Grad TA (Full Tuition + Stipend)</span></div>
+<div class="info-row"><span class="label">2009–10</span><span class="value">Graduate Scholarship, U. Dhaka</span></div>
+<div class="info-row"><span class="label">2005–09</span><span class="value">Undergrad Scholarship, U. Dhaka</span></div>
+<div class="info-row"><span class="label">2004</span><span class="value">Rajshahi Board Scholarship (HSC)</span></div>
+<div class="info-row"><span class="label">2002</span><span class="value">Rajshahi Board Scholarship (SSC)</span></div></div>
+</div></div></div></div>
+
+<!-- EDUCATION -->
+<div class="page" id="page-education"><div class="page-content">
+<div class="breadcrumb"><a onclick="navigate('home')">Home</a> <span>›</span> Education</div>
+<div class="page-header"><div class="page-label">Education &amp; Career</div><h1 class="page-title">Academic Journey</h1><p class="page-subtitle">From the University of Dhaka to Virginia Tech and North South University.</p></div>
+<div class="timeline">
+<div class="timeline-item major"><h3>Ph.D. in Economics</h3><div class="institution">Virginia Tech, USA</div><div class="year">2016</div><div class="detail">Dissertation: "Three Essays on the Economics of Hydraulic Fracturing" · Advisor: Dr. Nicolaus Tideman</div></div>
+<div class="timeline-item"><h3>M.A. in Economics</h3><div class="institution">Virginia Tech, USA</div><div class="year">2013 · CGPA: 3.86 / 4.00</div></div>
+<div class="timeline-item"><h3>M.S.S. in Economics</h3><div class="institution">University of Dhaka, Bangladesh</div><div class="year">2010 · First Class</div></div>
+<div class="timeline-item"><h3>B.S.S. in Economics</h3><div class="institution">University of Dhaka, Bangladesh</div><div class="year">2009 · First Class</div></div>
+<div class="timeline-item"><h3>H.S.C. &amp; S.S.C.</h3><div class="institution">Rangpur Cadet College</div><div class="year">HSC: 17th Merit · SSC: 4th Merit, Rajshahi Board</div></div>
+</div>
+<div class="career-section"><h3>Academic Positions</h3>
+<div class="career-item"><div class="period">Nov 2024 – now</div><div><div class="role">Chairperson</div><div class="org">Department of Economics, North South University</div></div></div>
+<div class="career-item"><div class="period">Apr 2022 – now</div><div><div class="role">Associate Professor</div><div class="org">Department of Economics, North South University</div></div></div>
+<div class="career-item"><div class="period">Jan 2017 – Mar 2022</div><div><div class="role">Assistant Professor</div><div class="org">Department of Economics, North South University</div></div></div>
+<div class="career-item"><div class="period">2015 – 2016</div><div><div class="role">Graduate Instructor</div><div class="org">Department of Economics, Virginia Tech</div></div></div>
+<div class="career-item"><div class="period">2011 – 2014</div><div><div class="role">Teaching Assistant</div><div class="org">Department of Economics, Virginia Tech</div></div></div>
+</div></div></div>
+
+<!-- RESEARCH -->
+<div class="page" id="page-research"><div class="page-content">
+<div class="breadcrumb"><a onclick="navigate('home')">Home</a> <span>›</span> Research</div>
+<div class="page-header"><div class="page-label">Research</div><h1 class="page-title">Research Interests</h1><p class="page-subtitle">Spanning core economic studies and interdisciplinary projects addressing socio-economic and environmental challenges in developing countries.</p></div>
+<div class="research-grid">
+<div class="research-card"><div class="icon">📊</div><h3>Development Economics</h3><p>Multidimensional poverty analysis, ultra-poor identification frameworks, social protection programs, tea garden worker welfare, and sustainable development in Bangladesh's urban slums and rural areas.</p></div>
+<div class="research-card"><div class="icon">📈</div><h3>Applied Econometrics</h3><p>Panel data analysis, time series forecasting, stochastic frontier analysis, generalized ordered logit models, and probit binary response regression applied to real-world socio-economic problems.</p></div>
+<div class="research-card"><div class="icon">🌿</div><h3>Environmental Economics</h3><p>Climate vulnerability assessment, disaster-induced agricultural productivity, nature-based solutions for urban resilience, solar energy sustainability, and energy poverty in disaster-prone regions.</p></div>
+<div class="research-card"><div class="icon">👥</div><h3>Labor Economics</h3><p>Female labor force participation under adverse shocks, household labor allocation decisions in rice farming, economic opportunities in the informal sector, and parenting time dynamics.</p></div>
+</div>
+<div class="research-topics"><h3>Active Research Topics</h3><div class="topic-tags"><span class="topic-tag">Multidimensional Poverty</span><span class="topic-tag">Urban Slums</span><span class="topic-tag">Climate Vulnerability</span><span class="topic-tag">Disaster Resilience</span><span class="topic-tag">Agricultural Efficiency</span><span class="topic-tag">Solar Energy Access</span><span class="topic-tag">Social Protection</span><span class="topic-tag">Trade &amp; LDCs</span><span class="topic-tag">Healthcare Systems</span><span class="topic-tag">COVID-19 Impacts</span><span class="topic-tag">Nature-Based Solutions</span><span class="topic-tag">AI Surge Forecasting</span><span class="topic-tag">Intimate Partner Violence</span><span class="topic-tag">Informal Economy</span></div></div>
+</div></div>
+<!-- PUBLICATIONS -->
+<div class="page" id="page-publications"><div class="page-content">
+<div class="breadcrumb"><a onclick="navigate('home')">Home</a> <span>›</span> Publications</div>
+<div class="page-header"><div class="page-label">Publications</div><h1 class="page-title">Selected Publications</h1><p class="page-subtitle">Peer-reviewed journal articles, book chapters, policy briefs, and opinion pieces.</p></div>
+<div class="pub-stats"><div class="pub-stat"><div class="num">11</div><div class="lbl">Journal Articles</div></div><div class="pub-stat"><div class="num">4</div><div class="lbl">Book Chapters</div></div><div class="pub-stat"><div class="num">3</div><div class="lbl">Policy Briefs</div></div><div class="pub-stat"><div class="num">7</div><div class="lbl">Op-Eds</div></div></div>
+<div class="pub-filter"><button class="active" data-filter="all">All (25)</button><button data-filter="journal">Journal Articles</button><button data-filter="book">Book Chapters</button><button data-filter="policy">Policy Briefs</button><button data-filter="oped">Op-Eds</button></div>
+<div class="pub-list">
+<div class="pub-item show" data-type="journal"><div class="pub-year-tag">2026 · FORTHCOMING</div><div class="pub-title">Parenting Time and Intimate Partner Violence Perceptions in Bangladesh</div><div class="pub-authors">with A. Das, S. Khan, T. Buchanan, K. Nuzhat</div><div class="pub-journal">Journal of Bangladesh Studies</div></div>
+<div class="pub-item show" data-type="journal"><div class="pub-year-tag">2026 · R&amp;R</div><div class="pub-title">A New Framework to Identify the Ultra-poor Population in the Slums of Dhaka</div><div class="pub-journal">Sustainable Development</div><div class="pub-meta"><span class="pub-badge q1">Q1</span><span class="pub-badge scopus">JIF 8.2</span></div></div>
+<div class="pub-item show" data-type="journal"><div class="pub-year-tag">2026 · R&amp;R</div><div class="pub-title">Multidimensional Poverty Scenario in Dhaka's Slums &amp; Its Limitations as an Indicator</div><div class="pub-journal">World Development Sustainability</div><div class="pub-meta"><span class="pub-badge q1">Q1</span></div></div>
+<div class="pub-item show" data-type="journal"><div class="pub-year-tag">2025</div><div class="pub-title">The Determinants of Multidimensional Poverty in the Urban Slums of Dhaka City</div><div class="pub-authors">Ehsan, S.M.A., Bhuiyan, M.H., Rahman, M., et al.</div><div class="pub-journal">World Development Perspectives, 39, 100725</div><div class="pub-meta"><span class="pub-badge q1">Q1</span><span class="pub-badge scopus">JIF 2.3</span><a class="pub-link" href="https://doi.org/10.1016/j.wdp.2025.100725" target="_blank">View →</a></div></div>
+<div class="pub-item show" data-type="journal"><div class="pub-year-tag">2025</div><div class="pub-title">How Social Indicators and Healthcare Systems Shape Pandemic Outcomes</div><div class="pub-authors">Ehsan, S.M.A., Arif, K.B., &amp; Rahman, M.</div><div class="pub-journal">Journal of Health and Social Sciences, 10(3), 263-276</div><div class="pub-meta"><span class="pub-badge q2">Q2</span><span class="pub-badge scopus">JIF 2.82</span><a class="pub-link" href="https://journalhss.com/wp-content/uploads/10.192042025HWSC2.pdf" target="_blank">View →</a></div></div>
+<div class="pub-item show" data-type="journal"><div class="pub-year-tag">2025</div><div class="pub-title">Strengthening Resilience in Ultra-poverty: Multilayered Indicators in Climate Vulnerability</div><div class="pub-authors">Ferdausi, M., Tarana, M.Y., … Ehsan, S.M.A., et al.</div><div class="pub-journal">Int. Journal of Sustainable Development &amp; World Ecology, 1–13</div><div class="pub-meta"><span class="pub-badge q1">Q1</span><span class="pub-badge scopus">JIF 7.7</span><a class="pub-link" href="https://doi.org/10.1080/13504509.2025.2590759" target="_blank">View →</a></div></div>
+<div class="pub-item show" data-type="journal"><div class="pub-year-tag">2025</div><div class="pub-title">The Potential of MCBP in Addressing Poverty for Tea Garden Workers</div><div class="pub-authors">Razzaque, M.A., Eusuf, M.A., Rahman, J., Ehsan, S.M.A.</div><div class="pub-journal">Development Letters, 6(2)</div><div class="pub-meta"><a class="pub-link" href="https://drive.google.com/file/d/15fSsl3_g2kQIbx5DlcIHvc6wMBzK8LUu/view" target="_blank">View →</a></div></div>
+<div class="pub-item show" data-type="journal"><div class="pub-year-tag">2024</div><div class="pub-title">Labour Allocation Decision of Rice Farming Households in Bangladesh</div><div class="pub-authors">Hossain, J., Hossain, M.I., &amp; Ehsan, S.M.A.</div><div class="pub-journal">Economic Papers, 43(1), 50-62</div><div class="pub-meta"><span class="pub-badge q2">Q2</span><span class="pub-badge scopus">JIF 0.9</span><a class="pub-link" href="https://onlinelibrary.wiley.com/doi/abs/10.1111/1759-3441.12396" target="_blank">View →</a></div></div>
+<div class="pub-item show" data-type="journal"><div class="pub-year-tag">2024</div><div class="pub-title">Disaster Induced Agricultural Productivity in Coastal Bangladesh: A Stochastic Frontier Analysis</div><div class="pub-authors">Ehsan, S.M.A., Jakariya, M., et al.</div><div class="pub-journal">Research on World Agricultural Economy, 517-532</div><div class="pub-meta"><span class="pub-badge q3">Q3</span><span class="pub-badge scopus">JIF 1.1</span><a class="pub-link" href="https://journals.nasspublishing.com/index.php/rwae/article/view/1290" target="_blank">View →</a></div></div>
+<div class="pub-item show" data-type="journal"><div class="pub-year-tag">2021</div><div class="pub-title">Solar Energy and Natural Disasters: Household Coping Mechanisms in Bangladesh</div><div class="pub-authors">Amin, S.B., Chowdhury, M.I., Ehsan, S.A., &amp; Iqbal, S.Z.</div><div class="pub-journal">Energy Research &amp; Social Science, 79, 102190</div><div class="pub-meta"><span class="pub-badge q1">Q1</span><span class="pub-badge scopus">JIF 7.4</span><a class="pub-link" href="https://www.sciencedirect.com/science/article/abs/pii/S2214629621002838" target="_blank">View →</a></div></div>
+<div class="pub-item show" data-type="journal"><div class="pub-year-tag">2020</div><div class="pub-title">Female Labor Force Participation with Adverse Shocks: Rural Households in Bangladesh</div><div class="pub-authors">Ehsan, S.M.A., &amp; Akter, S.</div><div class="pub-journal">Int. Review of Business Research Papers, 16(1), 177-201</div><div class="pub-meta"><span class="pub-badge abdc">ABDC</span></div></div>
+<div class="pub-item" data-type="book"><div class="pub-year-tag">2025 · BOOK CHAPTER</div><div class="pub-title">Cost-Benefit Assessment for NBS</div><div class="pub-authors">with T. Aziz, A. Shahed, A. Rahman, M.M. Hossain</div><div class="pub-journal">Ch. 4, NBS for Urban Resilience in Bangladesh · IUCN &amp; GCA</div><div class="pub-meta"><a class="pub-link" href="https://gca.org/wp-content/uploads/2025/04/Compendium-on-Nature-Based-Solutions-for-Urban-Resilience-In-Bangladesh.pdf" target="_blank">View →</a></div></div>
+<div class="pub-item" data-type="book"><div class="pub-year-tag">2021 · BOOK CHAPTER</div><div class="pub-title">Solar Energy Sustainability in Bangladesh: Management Challenges</div><div class="pub-authors">with S.B. Amin, M.I. Chowdhury, S.Z. Iqbal</div><div class="pub-journal">Ch. 30, Renewable Energy Systems · Elsevier</div><div class="pub-meta"><a class="pub-link" href="https://www.sciencedirect.com/science/article/abs/pii/B9780128245552000150" target="_blank">View →</a></div></div>
+<div class="pub-item" data-type="book"><div class="pub-year-tag">2020 · BOOK CHAPTER</div><div class="pub-title">Barriers of Accessing Social Protection for the Poor</div><div class="pub-authors">with M.A. Razzaque, I.H. Bhuiyan</div><div class="pub-journal">Ch. 1, Social Protection Research · Bangladesh Planning Commission</div><div class="pub-meta"><a class="pub-link" href="https://socialprotection.gov.bd/wp-content/uploads/2020/03/A-Compendium-of-Social-Protection-Researches.pdf" target="_blank">View →</a></div></div>
+<div class="pub-item" data-type="book"><div class="pub-year-tag">2020 · BOOK CHAPTER</div><div class="pub-title">Harmonisation of Small Social Security Programmes</div><div class="pub-authors">with M.A. Razzaque, M. Uddin, S. Barua</div><div class="pub-journal">Ch. 6, Social Protection Research · Bangladesh Planning Commission</div><div class="pub-meta"><a class="pub-link" href="https://socialprotection.gov.bd/wp-content/uploads/2020/03/A-Compendium-of-Social-Protection-Researches.pdf" target="_blank">View →</a></div></div>
+<div class="pub-item" data-type="policy"><div class="pub-year-tag">2023 · POLICY BRIEF</div><div class="pub-title">Social Protection for Female Tea Garden Workers in Sylhet</div><div class="pub-authors">with M.A. Razzaque, A. Eusuf, J. Rahman, M.M. Hassan</div><div class="pub-journal">UNICEF-RAPID, Bangladesh</div><div class="pub-meta"><a class="pub-link" href="https://www.rapidbd.org/wp-content/uploads/2023/03/Policy-Brief_5_27.11.22.pdf" target="_blank">View →</a></div></div>
+<div class="pub-item" data-type="policy"><div class="pub-year-tag">2020 · POLICY BRIEF</div><div class="pub-title">Impact of Chinese Economic Slowdown on Commonwealth Countries</div><div class="pub-authors">with S. Ali</div><div class="pub-journal">Commonwealth Secretariat, London</div><div class="pub-meta"><a class="pub-link" href="https://doi.org/10.14217/4dc1bc5a-en" target="_blank">View →</a></div></div>
+<div class="pub-item" data-type="policy"><div class="pub-year-tag">2019 · POLICY BRIEF</div><div class="pub-title">Global Trade Turmoil: Implications for LDCs, Small States and SSA</div><div class="pub-authors">with M.A. Razzaque</div><div class="pub-journal">Commonwealth Secretariat, London</div><div class="pub-meta"><a class="pub-link" href="https://doi.org/10.14217/af1e7fea-en" target="_blank">View →</a></div></div>
+<div class="pub-item" data-type="oped"><div class="pub-year-tag">2020 · OP-ED</div><div class="pub-title">World Export and Commonwealth Trade: A Lost Decade</div><div class="pub-authors">with S. Ali</div><div class="pub-journal">The Financial Express</div><div class="pub-meta"><a class="pub-link" href="https://thefinancialexpress.com.bd/views/views/world-export-and-commonwealth-trade-a-lost-decade-1594394169" target="_blank">Read →</a></div></div>
+<div class="pub-item" data-type="oped"><div class="pub-year-tag">2020 · OP-ED</div><div class="pub-title">China's Economic Slowdown and Commonwealth Trade Deceleration</div><div class="pub-authors">with S. Ali</div><div class="pub-journal">The Financial Express</div><div class="pub-meta"><a class="pub-link" href="https://thefinancialexpress.com.bd/views/analysis/chinas-economic-slowdown-and-commonwealth-trade-deceleration-1594567290" target="_blank">Read →</a></div></div>
+<div class="pub-item" data-type="oped"><div class="pub-year-tag">2020 · OP-ED</div><div class="pub-title">Commonwealth Trade in the Backdrop of COVID-19</div><div class="pub-authors">with S. Ali</div><div class="pub-journal">The Financial Express</div><div class="pub-meta"><a class="pub-link" href="https://thefinancialexpress.com.bd/views/analysis/commonwealth-trade-in-the-backdrop-of-covid-19-1594485131" target="_blank">Read →</a></div></div>
+<div class="pub-item" data-type="oped"><div class="pub-year-tag">2019 · OP-ED</div><div class="pub-title">Poorest Countries Caught in the Global Trade Turmoil</div><div class="pub-authors">with M.A. Razzaque, B. Vickers</div><div class="pub-journal">Enhanced Integrated Framework, Switzerland</div><div class="pub-meta"><a class="pub-link" href="https://www.enhancedif.org/en/op-ed/poorest-countries-caught-global-trade-turmoil" target="_blank">Read →</a></div></div>
+<div class="pub-item" data-type="oped"><div class="pub-year-tag">2019 · OP-ED</div><div class="pub-title">Trade War, Its Implications for LDCs, SSA and Small States</div><div class="pub-authors">with M.A. Razzaque</div><div class="pub-journal">The Financial Express</div><div class="pub-meta"><a class="pub-link" href="https://thefinancialexpress.com.bd/views/analysis/trade-war-its-implications-for-ldcs-ssa-and-small-states-1555513562" target="_blank">Read →</a></div></div>
+<div class="pub-item" data-type="oped"><div class="pub-year-tag">2019 · OP-ED</div><div class="pub-title">Export-GDP Nexus and Global Trade Crisis</div><div class="pub-authors">with M.A. Razzaque</div><div class="pub-journal">The Financial Express</div><div class="pub-meta"><a class="pub-link" href="https://thefinancialexpress.com.bd/views/analysis/export-gdp-nexus-and-global-trade-crisis-1555428450" target="_blank">Read →</a></div></div>
+<div class="pub-item" data-type="oped"><div class="pub-year-tag">2019 · OP-ED</div><div class="pub-title">Recent Trends in World Trade: LDCs, Small States, Sub-Saharan Africa</div><div class="pub-authors">with M.A. Razzaque</div><div class="pub-journal">The Financial Express</div><div class="pub-meta"><a class="pub-link" href="https://thefinancialexpress.com.bd/views/analysis/recent-trends-in-world-trade-ldcs-small-states-sub-saharan-africa-1555341035" target="_blank">Read →</a></div></div>
+</div></div></div>
+
+<!-- GRANTS -->
+<div class="page" id="page-grants"><div class="page-content">
+<div class="breadcrumb"><a onclick="navigate('home')">Home</a> <span>›</span> Grants</div>
+<div class="page-header"><div class="page-label">Grants &amp; Projects</div><h1 class="page-title">Funded Research</h1><p class="page-subtitle">Projects funded by IDRC, IUCN, UNDP, UNICEF, Commonwealth Secretariat, Concern Worldwide, and NSU.</p></div>
+<div class="grant-summary"><div class="grant-stat"><div class="num">11</div><div class="lbl">Projects</div></div><div class="grant-stat"><div class="num">8</div><div class="lbl">Funding Bodies</div></div><div class="grant-stat"><div class="num">CAD 1.5M</div><div class="lbl">Largest Grant</div></div></div>
+<div class="grants-list">
+<div class="grant-card"><div class="grant-amount">1.</div><div><h3>Spatial Surge Forecasting Using AI and Community Knowledge</h3><div class="grant-funder">CLARE (FCDO, UK &amp; IDRC, Canada) · Jul 2023 – ongoing</div><div class="grant-role">Co-Investigator · DALA Expert</div></div><div class="grant-amount" style="text-align:right">CAD 1.5M<br><small style="color:var(--muted);font-size:.68rem">3 years</small></div></div>
+<div class="grant-card"><div class="grant-amount">2.</div><div><h3>Climate Vulnerability and Capacity Analysis (CVCA) in Dhaka</h3><div class="grant-funder">Concern Worldwide · Oct–Dec 2024</div><div class="grant-role">Economist / Statistician</div></div><div class="grant-amount" style="text-align:right">BDT 36.77L</div></div>
+<div class="grant-card"><div class="grant-amount">3.</div><div><h3>Urban Nature-Based Solutions in Bangladesh: Catalogue &amp; Scaling</h3><div class="grant-funder">IUCN · Sep–Dec 2024</div><div class="grant-role">Consultant</div></div></div>
+<div class="grant-card"><div class="grant-amount">4.</div><div><h3>Motorcycle Revolution: COVID-19 Effects in the Informal Sector</h3><div class="grant-funder">CTRG, NSU · Mar 2022–Apr 2023</div><div class="grant-role">Co-Investigator</div></div></div>
+<div class="grant-card"><div class="grant-amount">5.</div><div><h3>Social Protection for Tea Garden Workers in Sylhet Division</h3><div class="grant-funder">UNICEF · Jul–Dec 2021</div><div class="grant-role">Consultant</div></div></div>
+<div class="grant-card"><div class="grant-amount">6.</div><div><h3>Chinese Economic Slowdown Impact on Commonwealth States</h3><div class="grant-funder">Commonwealth Secretariat · Feb–Apr 2020</div><div class="grant-role">Short-term Consultant</div></div></div>
+<div class="grant-card"><div class="grant-amount">7.</div><div><h3>Natural Disaster Impact on Energy Poverty in Bangladesh</h3><div class="grant-funder">CTRG, NSU · May 2019–Apr 2020</div><div class="grant-role">Co-Investigator</div></div></div>
+<div class="grant-card"><div class="grant-amount">8.</div><div><h3>Harmonisation of Small Social Security Programmes</h3><div class="grant-funder">UNDP, Bangladesh · Jul–Nov 2019</div><div class="grant-role">Co-Investigator</div></div></div>
+<div class="grant-card"><div class="grant-amount">9.</div><div><h3>Barriers of Accessing Social Protection for the Poor</h3><div class="grant-funder">UNDP, Bangladesh · Dec 2018–Mar 2019</div><div class="grant-role">Co-Investigator</div></div></div>
+<div class="grant-card"><div class="grant-amount">10.</div><div><h3>Global Trade Turmoil: Implications for LDCs &amp; Small States</h3><div class="grant-funder">Commonwealth Secretariat · Oct 2018–Jan 2019</div><div class="grant-role">Short-term Consultant</div></div></div>
+<div class="grant-card"><div class="grant-amount">11.</div><div><h3>Solar Energy Access in Rural Off-Grid Areas of Bangladesh</h3><div class="grant-funder">CTRG, NSU · May 2018–Apr 2019</div><div class="grant-role">Principal Investigator</div></div></div>
+</div></div></div>
+
+<!-- TEACHING -->
+<div class="page" id="page-teaching"><div class="page-content">
+<div class="breadcrumb"><a onclick="navigate('home')">Home</a> <span>›</span> Teaching</div>
+<div class="page-header"><div class="page-label">Teaching</div><h1 class="page-title">Courses Taught</h1><p class="page-subtitle">Graduate and undergraduate courses spanning econometrics, game theory, development, and environmental economics.</p></div>
+<div class="teaching-tabs"><button class="active" data-ttab="grad">Graduate · NSU</button><button data-ttab="ugrad">Undergraduate · NSU</button><button data-ttab="vt">Virginia Tech</button></div>
+<div class="teaching-panel active" id="ttab-grad"><div class="course-grid">
+<div class="course-card"><span class="course-name">Econometric Methods</span><span class="course-code">ECO502</span></div>
+<div class="course-card"><span class="course-name">Panel Data &amp; Limited Dependent Variable</span><span class="course-code">ECO651</span></div>
+<div class="course-card"><span class="course-name">Time Series Modeling</span><span class="course-code">ECO652</span></div>
+<div class="course-card"><span class="course-name">Game Theory</span><span class="course-code">ECO686</span></div>
+<div class="course-card"><span class="course-name">Economic Development</span><span class="course-code">DEV563</span></div>
+<div class="course-card"><span class="course-name">Natural Resource &amp; Ecological Economics</span><span class="course-code">ENV602</span></div>
+</div></div>
+<div class="teaching-panel" id="ttab-ugrad"><div class="course-grid">
+<div class="course-card"><span class="course-name">Game Theory</span><span class="course-code">ECO475</span></div>
+<div class="course-card"><span class="course-name">Applied Time Series Forecasting</span><span class="course-code">ECO472</span></div>
+<div class="course-card"><span class="course-name">Introduction to Econometrics</span><span class="course-code">ECO372</span></div>
+<div class="course-card"><span class="course-name">Environmental &amp; Natural Resource Econ.</span><span class="course-code">ECO354</span></div>
+<div class="course-card"><span class="course-name">Introduction to Microeconomics</span><span class="course-code">ECO101</span></div>
+</div></div>
+<div class="teaching-panel" id="ttab-vt"><div class="course-grid">
+<div class="course-card"><span class="course-name">Principles of Microeconomics</span><span class="course-code">Instructor</span></div>
+<div class="course-card"><span class="course-name">Principles of Macroeconomics</span><span class="course-code">Instructor</span></div>
+<div class="course-card"><span class="course-name">Mathematical Economics (Ph.D.)</span><span class="course-code">Review Sessions</span></div>
+<div class="course-card"><span class="course-name">Theory of Organization</span><span class="course-code">TA</span></div>
+<div class="course-card"><span class="course-name">Law &amp; Economics</span><span class="course-code">TA</span></div>
+<div class="course-card"><span class="course-name">Public Economics</span><span class="course-code">TA</span></div>
+<div class="course-card"><span class="course-name">Microeconomic Theory</span><span class="course-code">TA</span></div>
+</div></div>
+</div></div>
+
+<!-- SERVICE -->
+<div class="page" id="page-service"><div class="page-content">
+<div class="breadcrumb"><a onclick="navigate('home')">Home</a> <span>›</span> Service</div>
+<div class="page-header"><div class="page-label">Professional Service</div><h1 class="page-title">Professional Activities</h1><p class="page-subtitle">Administrative roles, editorial work, conference participation, training, and external examination.</p></div>
+<div class="service-tabs"><button class="active" data-stab="admin">Administration</button><button data-stab="review">Scholarly Reviews</button><button data-stab="panel">Panels &amp; Sessions</button><button data-stab="training">Training &amp; Supervision</button></div>
+<div class="service-panel active" id="stab-admin"><ul class="service-list">
+<li><span class="year-label">2024 – now</span>Chairperson, Department of Economics, NSU</li>
+<li><span class="year-label">2024 – now</span>Member, NSU SBE Scientific Review Committee</li>
+<li><span class="year-label">2023 – now</span>Member, NSU IRB / Ethics Review Committee</li>
+<li><span class="year-label">2020 – 2024</span>Member, NSU Institutional Curriculum Formatting Committee</li>
+<li><span class="year-label">2021 – 2024</span>Coordinator, Assessment &amp; Curriculum Planning Committee</li>
+<li><span class="year-label">2019 – 2024</span>Member, Research Committee, Dept. of Economics</li>
+<li><span class="year-label">2018 – 2024</span>Coordinator, ECO101: Introduction to Microeconomics</li>
+<li><span class="year-label">2020 – 2022</span>Coordinator, Brown Bag Seminar Series</li>
+</ul></div>
+<div class="service-panel" id="stab-review"><ul class="service-list">
+<li><span class="year-label">Co-Editor</span><em>Development Letters</em> (ISSN: 3079-7934)</li>
+<li><span class="year-label">2026</span>Journal: <em>Poverty &amp; Public Policy</em></li>
+<li><span class="year-label">2023</span>Journal: <em>Economic Papers</em> · <em>North South Business Review</em></li>
+<li><span class="year-label">2024–26</span>Grant: SANDEE Research Grant Competition</li>
+<li><span class="year-label">2026</span>Grant: WEE-DiFine Initiative, BIGD</li>
+<li><span class="year-label">2024</span>Grant: WEE-Connect Initiative, BIGD</li>
+<li><span class="year-label">2024–25</span>Grant: NSU CTRG</li>
+<li><span class="year-label">2025</span>Conference: ICBT 2025, Dhaka</li>
+<li><span class="year-label">2019</span>Conference: BER Annual Economists' Conference</li>
+<li><span class="year-label">2018</span>Conference: ERG Conference</li>
+</ul></div>
+<div class="service-panel" id="stab-panel"><ul class="service-list">
+<li><span class="year-label">2025</span><strong>Chair:</strong> CPD Climate Week — "Climate Solutions That Work"</li>
+<li><span class="year-label">2025</span><strong>Panelist:</strong> ICBT 2025 — U. of Dhaka &amp; U. of Asia Pacific</li>
+<li><span class="year-label">2025</span><strong>Panelist:</strong> Social Business Academia &amp; 3ZERO Club Convention</li>
+<li><span class="year-label">2025</span><strong>Panelist:</strong> Social Business Day 2025 — Yunus Centre</li>
+<li><span class="year-label">2025</span><strong>Panelist:</strong> NBR Digitalisation — Emerging Credit Rating Ltd.</li>
+<li><span class="year-label">2024</span><strong>Panelist:</strong> Tackling Inequality — RAPID</li>
+<li><span class="year-label">2023</span><strong>Panelist:</strong> BIDS Research ALMANAC 2023</li>
+<li><span class="year-label">2022</span><strong>Panelist:</strong> Digital Financial Inclusion — Innovision &amp; NSU</li>
+<li><span class="year-label">2021</span><strong>Panelist:</strong> Agricultural Innovations — NSU, Curtin, UWA</li>
+<li><span class="year-label">2019</span><strong>Panelist:</strong> BERC-NSU-BDAEE Energy Summit</li>
+</ul></div>
+<div class="service-panel" id="stab-training"><ul class="service-list">
+<li><span class="year-label">2026</span><strong>External:</strong> Viva Voce, Dept. of Economics, SUST</li>
+<li><span class="year-label">2025</span><strong>External:</strong> Question Moderation, SUST</li>
+<li><span class="year-label">2025</span><strong>External:</strong> 5 MSS thesis examinations, U. of Dhaka</li>
+<li><span class="year-label">2024</span><strong>Supervisor:</strong> MS thesis, University of Kent, UK</li>
+<li><span class="year-label">2023</span><strong>Trainer:</strong> SDPM — Bangladesh Civil Service Academy</li>
+<li><span class="year-label">2023</span><strong>External:</strong> 3 MSS thesis examinations, U. of Dhaka</li>
+<li><span class="year-label">2022</span><strong>External:</strong> MS thesis, BRAC University</li>
+<li><span class="year-label">2021</span><strong>Trainer:</strong> Time Series for Environment &amp; Climate — FAO-DoE</li>
+<li><span class="year-label">2020</span><strong>Trainer:</strong> Multivariate Analysis — ERP, NSU</li>
+</ul></div>
+</div></div>
+
+<!-- CONTACT -->
+<div class="page" id="page-contact"><div class="page-content">
+<div class="breadcrumb"><a onclick="navigate('home')">Home</a> <span>›</span> Contact</div>
+<div class="page-header"><div class="page-label">Contact</div><h1 class="page-title">Get in Touch</h1><p class="page-subtitle">For research collaborations, academic inquiries, or speaking invitations.</p></div>
+<div class="contact-grid"><div>
+<div class="contact-item"><div class="contact-icon">📧</div><div><div class="contact-label">Email</div><div class="contact-value"><a href="mailto:syed.ehsan@northsouth.edu">syed.ehsan@northsouth.edu</a></div></div></div>
+<div class="contact-item"><div class="contact-icon">📞</div><div><div class="contact-label">Phone</div><div class="contact-value">+8802 55668200 Ext. 1800</div></div></div>
+<div class="contact-item"><div class="contact-icon">🏢</div><div><div class="contact-label">Office</div><div class="contact-value">NAC 801, 8th Floor (East)<br>North Academic Building<br>North South University</div></div></div>
+<div class="contact-item"><div class="contact-icon">📍</div><div><div class="contact-label">Address</div><div class="contact-value">North South University<br>Bashundhara, Dhaka-1229<br>Bangladesh</div></div></div>
+</div><div>
+<a class="profile-link" href="https://www.northsouth.edu/faculty-members/sbe/economics/dr.-syed-mortuza-asif-ehsan.html" target="_blank"><div class="pf-icon">🎓</div><div><div class="pf-name">NSU Faculty Profile</div><div class="pf-desc">Official university page</div></div><span class="pf-arrow">→</span></a>
+<a class="profile-link" href="https://www.linkedin.com/in/syed-mortuza-asif-ehsan-67594268/" target="_blank"><div class="pf-icon">💼</div><div><div class="pf-name">LinkedIn</div><div class="pf-desc">Professional network</div></div><span class="pf-arrow">→</span></a>
+</div></div></div></div>
+
+<footer>
+<div class="footer-name">Dr. Syed Mortuza Asif Ehsan</div>
+<p>Associate Professor &amp; Chairperson · Department of Economics · North South University</p>
+<div class="footer-nav"><a onclick="navigate('home')">Home</a><a onclick="navigate('about')">About</a><a onclick="navigate('education')">Education</a><a onclick="navigate('research')">Research</a><a onclick="navigate('publications')">Publications</a><a onclick="navigate('grants')">Grants</a><a onclick="navigate('teaching')">Teaching</a><a onclick="navigate('service')">Service</a><a onclick="navigate('contact')">Contact</a></div>
+<p style="margin-top:1rem;opacity:.5">&copy; 2026</p>
+</footer>
+
+<script>
+let currentPage='home';
+function navigate(page){
+  if(page===currentPage)return;
+  document.querySelectorAll('.page').forEach(function(p){p.classList.remove('active')});
+  var t=document.getElementById('page-'+page);
+  if(t){t.classList.add('active');currentPage=page;history.pushState(null,'','#'+page);window.scrollTo({top:0,behavior:'instant'});updateNav(page);closeMobile()}
+}
+function updateNav(page){
+  document.querySelectorAll('.nav-links a, .mobile-menu a').forEach(function(a){
+    var m=a.getAttribute('onclick');
+    if(m){var r=m.match(/navigate\('(.+?)'\)/);a.classList.toggle('active',r&&r[1]===page)}
+  });
+}
+window.addEventListener('popstate',function(){
+  var h=location.hash.slice(1)||'home';
+  document.querySelectorAll('.page').forEach(function(p){p.classList.remove('active')});
+  var t=document.getElementById('page-'+h);
+  if(t){t.classList.add('active');currentPage=h;updateNav(h)}
+});
+window.addEventListener('DOMContentLoaded',function(){var h=location.hash.slice(1);if(h&&h!=='home')navigate(h);else updateNav('home')});
+window.addEventListener('scroll',function(){
+  var h=document.documentElement,pct=(h.scrollTop/(h.scrollHeight-h.clientHeight))*100;
+  document.getElementById('scrollProgress').style.width=(isNaN(pct)?0:pct)+'%';
+  document.getElementById('navbar').classList.toggle('scrolled',window.scrollY>10);
+  document.getElementById('backTop').classList.toggle('visible',window.scrollY>400);
+});
+var hamburger=document.getElementById('hamburger'),mobileMenu=document.getElementById('mobileMenu'),menuOpen=false;
+hamburger.addEventListener('click',function(){
+  menuOpen=!menuOpen;mobileMenu.classList.toggle('open',menuOpen);
+  var spans=hamburger.querySelectorAll('span');
+  spans[0].style.transform=menuOpen?'rotate(45deg) translate(5px,5px)':'';
+  spans[1].style.opacity=menuOpen?'0':'1';
+  spans[2].style.transform=menuOpen?'rotate(-45deg) translate(5px,-5px)':'';
+});
+function closeMobile(){menuOpen=false;mobileMenu.classList.remove('open');var spans=hamburger.querySelectorAll('span');for(var i=0;i<spans.length;i++){spans[i].style.transform='';spans[i].style.opacity='1'}}
+document.querySelectorAll('.pub-filter button').forEach(function(btn){
+  btn.addEventListener('click',function(){
+    document.querySelectorAll('.pub-filter button').forEach(function(b){b.classList.remove('active')});
+    btn.classList.add('active');var f=btn.dataset.filter;
+    document.querySelectorAll('.pub-item').forEach(function(i){i.classList.toggle('show',f==='all'||i.dataset.type===f)});
+  });
+});
+document.querySelectorAll('.teaching-tabs button').forEach(function(btn){
+  btn.addEventListener('click',function(){
+    document.querySelectorAll('.teaching-tabs button').forEach(function(b){b.classList.remove('active')});
+    document.querySelectorAll('.teaching-panel').forEach(function(p){p.classList.remove('active')});
+    btn.classList.add('active');document.getElementById('ttab-'+btn.dataset.ttab).classList.add('active');
+  });
+});
+document.querySelectorAll('.service-tabs button').forEach(function(btn){
+  btn.addEventListener('click',function(){
+    document.querySelectorAll('.service-tabs button').forEach(function(b){b.classList.remove('active')});
+    document.querySelectorAll('.service-panel').forEach(function(p){p.classList.remove('active')});
+    btn.classList.add('active');document.getElementById('stab-'+btn.dataset.stab).classList.add('active');
+  });
+});
+</script>
+</body>
+</html>
